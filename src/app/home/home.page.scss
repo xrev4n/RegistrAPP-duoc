@@ -4,7 +4,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 30%;
+  top: 40%;
   transform: translateY(-50%);
 }
 
@@ -24,4 +24,27 @@
 
 #container a {
   text-decoration: none;
+}
+
+.link-container {
+  margin-top: 10px;
+  text-align: center; 
+}
+
+.checkbox-container {
+  margin-top: 10px;
+  text-align: center; 
+}
+
+.custom-item {
+  --inner-padding-end: 0px;
+  --inner-padding-start: 0px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.center-text {
+  width: 100%;
+  text-align: center;
 }
