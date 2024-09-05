@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!-- Boton de regreso -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">
+      Register
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <ion-list>
+      <ion-list>
+
+        <ion-item class="ion-text-center">
+          <h1>Registrar</h1>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Usuario" type="user" placeholder="Ingrese su nombre de usuario"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Correo" type="email" placeholder="Ingrese su E-mail"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-input label="Contraseña" type="password" placeholder="Ingrese su contraseña"></ion-input>
+        </ion-item>
+
+        <ion-button size="default" id="btn-ingresar">
+          Ingresar
+        </ion-button>
+
+      </ion-list>
+    </ion-list>
+  </div>
+</ion-content>

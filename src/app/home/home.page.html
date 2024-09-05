@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      Home - Login
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <ion-list>
+      <ion-list>
+
+        <ion-item class="ion-text-center">
+          <h1>Iniciar sesión</h1>
+        </ion-item>
+        
+        <ion-item>
+          <ion-input label="Usuario" type="user" placeholder="Ingrese su nombre de usuario"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-input label="Contraseña" type="password" placeholder="Ingrese su contraseña"></ion-input>
+        </ion-item>
+
+        <div class="link-container">
+          <a routerLink="/password-recovery" class="classic-anchor">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <ion-button size="default" id="btn-ingresar">
+          Ingresar
+        </ion-button>
+
+        <ion-button size="default" id="btn-ingresar" routerLink="/register">
+          Registrarse
+        </ion-button>
+
+      </ion-list>
+    </ion-list>
+  </div>
+</ion-content>
