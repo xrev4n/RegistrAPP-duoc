@@ -5,6 +5,7 @@
   right: 0;
   top: 40%;
   transform: translateY(-50%);
+  z-index: 1;
 }
 
 #container strong {
@@ -61,4 +62,29 @@ ion-list {
       background: transparent !important; // Hace que los inputs y labels sean transparentes
     }
   }
+}
+
+/* Establece el fondo de toda la página */
+ion-content {
+  position: relative;
+  height: 100vh; /* Asegura que el contenedor cubra toda la altura de la ventana */
+  padding: 0; /* Elimina el padding por defecto */
+  margin: 0; /* Elimina el margin por defecto */
+}
+
+.background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/img/wave-background.svg');
+  background-size: cover; /* Ajusta el tamaño para cubrir el contenedor */
+  background-repeat: no-repeat;
+  background-position: top center;
+  z-index: -1; /* Asegura que el fondo quede detrás del contenido */
+}
+
+.form-container{
+  margin-top: -5%;
 }

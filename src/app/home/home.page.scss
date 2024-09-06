@@ -1,6 +1,6 @@
 #container {
   text-align: center;
-
+  z-index: 1;
   position: absolute;
   left: 0;
   right: 0;
@@ -50,11 +50,47 @@
 }
 
 .icon-container {
+  margin-top: -30%;
   display: flex;
   justify-content: center;
   align-items: center;
   height: auto;
 }
+
+.welcome-container {
+  margin-top: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+/* Establece el fondo de toda la página */
+ion-content {
+  position: relative;
+  height: 100vh; 
+  padding: 0; 
+  margin: 0; 
+}
+
+.background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/img/wave-background.svg');
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: top center;
+  z-index: -1;
+}
+
+.unified-container{
+  margin-top: -20%;
+}
+
+
 
 
 
