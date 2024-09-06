@@ -4,6 +4,7 @@ import { HomePage } from '../home/home.page';
 import { PasswordrecoveryPage } from '../passwordrecovery/passwordrecovery.page';
 import { RegisterPage } from '../register/register.page';
 import { LoginPage } from './login.page';
+import { MainPagePage } from '../main-page/main-page.page';
 
 const routes: Routes = [
   {
@@ -21,7 +22,11 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomePage
-  }
+  },
+  {
+    path: 'main-page',
+    component: MainPagePage
+  },
 ];
 
 @NgModule({
