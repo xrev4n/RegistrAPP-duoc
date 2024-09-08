@@ -68,6 +68,7 @@ ion-list {
 ion-content {
   position: relative;
   height: 100vh; /* Asegura que el contenedor cubra toda la altura de la ventana */
+  --overflow: hidden; 
   padding: 0; /* Elimina el padding por defecto */
   margin: 0; /* Elimina el margin por defecto */
 }
