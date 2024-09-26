@@ -32,6 +32,7 @@
     display: flex;
     justify-content: center;
     text-align: center;
+    --background: transparent !important;
   }
   
   .center-text {
@@ -42,4 +43,38 @@
   #btn-ingresar {
     margin-top: 10px;
   }
+
+// Asigna transparencia a los elementos en ion-list
+ion-list {
+  background: transparent !important; // Asegura que la lista sea transparente
   
+  ion-item {
+    --background: transparent !important; // Hace que los elementos de la lista sean transparentes
+    ion-label,
+    ion-input {
+      background: transparent !important; // Hace que los inputs y labels sean transparentes
+    }
+  }
+}
+
+/* Establece el fondo de toda la página */
+ion-content {
+  position: relative;
+  height: 100vh; 
+  --overflow: hidden; 
+  padding: 0; 
+  margin: 0; 
+}
+
+.background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/img/wave-background.svg');
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: top center;
+  z-index: -1;
+}

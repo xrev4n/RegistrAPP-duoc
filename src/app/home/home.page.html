@@ -1,52 +1,20 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Login</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
+  <div class="background-container"></div> <!-- Fondo SVG -->
   <div id="container">
-    <ion-list>
-      <ion-list>
-        <ion-item lines="none" class="custom-item">
-          <h1 class="center-text">Iniciar sesión</h1>
-        </ion-item>
-        
-        <ion-item>
-          <ion-label position="floating">Usuario</ion-label>
-          <ion-input type="text" placeholder=""></ion-input>
-        </ion-item>
-        
-        <ion-item>
-          <ion-label position="floating">Contraseña</ion-label>
-          <ion-input type="password" placeholder=""></ion-input>
-        </ion-item>
-
-        <div class="checkbox-container">
-          <ion-checkbox>Recordar contraseña</ion-checkbox>
-        </div>
-
-        <div class="link-container">
-          <a routerLink="/password-recovery" class="classic-anchor">¿Olvidaste tu contraseña?</a>
-        </div>
-
-        <div class="btn-container">
-          <ion-button size="default" id="btn-ingresar" shape="round">
-            Ingresar
-          </ion-button>
-        </div>
-
-        <div class="btn-container">
-          <ion-button size="small" id="btn-registrar" routerLink="/register" shape="round" fill="outline">
-            Registrarse
-          </ion-button>
-        </div>    
-      </ion-list>
-    </ion-list>
+    <!-- Logo centrado -->
+    <div class="icon-container">
+      <img src="assets/img/logo.png" alt="logo-registrapp" class="centered-icon">
+    </div>
+    <div class="unified-container">
+      <!-- Mensaje de bienvenida -->
+      <div class="welcome-container">
+        <h1>¡Bienvenido!</h1>
+      </div>
+      <!-- Botones login y registro -->
+      <div>
+        <ion-button shape="round" color="warning" id="btn-login" routerLink="/login">Iniciar Sesión</ion-button>
+        <ion-button shape="round" fill="outline" color="warning" id="btn-registro" routerLink="/register">Registrarse</ion-button>
+      </div>
+    </div>
   </div>
 </ion-content>

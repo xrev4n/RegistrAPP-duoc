@@ -34,4 +34,21 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+// @import "@ionic/angular/css/palettes/dark.system.css";
+
+/* Aplica la fuente Lato a toda la aplicación */
+body {
+    font-family: 'Lato', sans-serif;
+  }
+/* Ajusta el estilo de los componentes*/
+ion-content, ion-header, ion-toolbar, ion-title, ion-label, ion-item, ion-button {
+  font-family: 'Lato', sans-serif;
+}
+/* Establece la fuente Lato como fuente predeterminada */
+:root {
+    --font-family-base: 'Lato', sans-serif;
+}
+/* Establece un margen global para los botones */
+ion-button {
+  margin-top: 5%;
+}

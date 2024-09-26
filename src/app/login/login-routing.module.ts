@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomePage } from './home.page';
+import { Routes, RouterModule } from '@angular/router';
+import { HomePage } from '../home/home.page';
 import { PasswordrecoveryPage } from '../passwordrecovery/passwordrecovery.page';
 import { RegisterPage } from '../register/register.page';
-import { LoginPage } from '../login/login.page';
+import { LoginPage } from './login.page';
+import { MainPagePage } from '../main-page/main-page.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomePage,
+    component: LoginPage,
   },
   {
     path: 'password-recovery',
@@ -19,13 +20,17 @@ const routes: Routes = [
     component: RegisterPage,
   },
   {
-    path: 'login',
-    component: LoginPage
-  }
+    path: 'home',
+    component: HomePage
+  },
+  {
+    path: 'main-page',
+    component: MainPagePage
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class HomePageRoutingModule {}
+export class LoginPageRoutingModule {}
