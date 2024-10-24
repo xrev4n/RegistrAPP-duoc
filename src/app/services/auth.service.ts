@@ -7,12 +7,21 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   private apiUrl = 'https://www.presenteprofe.cl/api/v1/auth'; // Cambia esto por tu URL real
+  private userName: string | null = null; // Variable para almacenar el nombre del usuario
 
   constructor(private http: HttpClient) { }
 
   login(correo: string, password: string): Observable<any> {
     const body = { correo, password };
     return this.http.post<any>(`${this.apiUrl}`, body);
+  }
+
+  setUserName(name: string) {
+    this.userName = name; // Guarda el nombre del usuario
+  }
+
+  getUserName(): string | null {
+    return this.userName; // Devuelve el nombre del usuario
   }
 
   getUserInfo(token: string): Observable<any> {
