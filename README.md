@@ -1,9 +1,9 @@
 # RegistrAPP - README
 
-## Credenciales
+## Credenciales de Prueba
 
 Para logear ingresar las siguientes credenciales:
 
-- **Usuario:** admin
-- **Contraseña:** admin
-
+- **Usuario:** estudiante@presenteprofe.cl
+- **Contraseña:** admin123
+-------------------------------------------------
