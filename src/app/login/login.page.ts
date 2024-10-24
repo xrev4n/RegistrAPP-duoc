@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, AlertController } from '@ionic/angular'; // Importamos NavController y AlertController
+import { NavController, AlertController } from '@ionic/angular'; 
+import { AuthService } from '../services/auth.service'; // Importa el servicio de autenticación
 
 @Component({
   selector: 'app-login',
@@ -8,27 +9,36 @@ import { NavController, AlertController } from '@ionic/angular'; // Importamos N
 })
 export class LoginPage implements OnInit {
 
-  username: string = '';  // Variable para el nombre de usuario
+  username: string = '';  // Variable para el correo (en vez de username)
   password: string = '';  // Variable para la contraseña
 
-  constructor(private navCtrl: NavController, private alertCtrl: AlertController) { }
+  constructor(private navCtrl: NavController, private alertCtrl: AlertController, private authService: AuthService) { }
 
   ngOnInit() {}
 
-  // Metodo para verificar las credenciales del usuario
+  // Método para iniciar sesión
   async login() {
-    if (this.username === 'admin' && this.password === 'admin') {
-      // Redirigir a la pagina principal si las credenciales son correctas
-      this.navCtrl.navigateForward('/main-page');
-    } else {
-      // Mostrar un alert si las credenciales son incorrectas
-      const alert = await this.alertCtrl.create({
-        header: 'Error',
-        message: 'Usuario y/o contraseña incorrectos, por favor intente nuevamente.',
-        buttons: ['OK']
-      });
+    // Llamar al servicio de autenticación
+    this.authService.login(this.username, this.password).subscribe(
+      async (response) => {
+        // Si la autenticación es exitosa
+        if (response.auth && response.auth.token) {
+          // Guardar el token en localStorage
+          localStorage.setItem('authToken', response.auth.token);
 
-      await alert.present();
-    }
+          // Redirigir a la página principal
+          this.navCtrl.navigateForward('/main-page');
+        }
+      },
+      async (error) => {
+        // Manejo de errores de autenticación
+        const alert = await this.alertCtrl.create({
+          header: 'Error',
+          message: 'Usuario y/o contraseña incorrectos, por favor intente nuevamente.',
+          buttons: ['OK']
+        });
+        await alert.present();
+      }
+    );
   }
 }
