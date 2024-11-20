@@ -30,18 +30,25 @@ export class QrScannerPage {
 
   async startScanner() {
     try {
-      // Ocultar la interfaz web para mostrar el escáner en pantalla completa
-      BarcodeScanner.hideBackground();
+      // Mostrar la cámara para previsualización (cámara visible)
+      console.log('Iniciando el escáner y mostrando la cámara...');
+      document.querySelector('body')?.classList.add('scanner-active');
+
+      // Asegúrate de que la cámara esté visible
+      await BarcodeScanner.hideBackground(); // Mostrar la cámara y el fondo
 
       const result = await BarcodeScanner.startScan(); // Inicia el escáner
+
+      // Verificar si se ha escaneado un código QR
       if (result.hasContent) {
         this.scanResult = result.content; // Pegar resultado en el input
+        console.log('Código QR escaneado: ', this.scanResult);
       } else {
         console.log('No se detectó contenido en el código QR.');
       }
-
-      // Mostrar la interfaz web nuevamente
-      BarcodeScanner.showBackground();
+       // Después de terminar el escáner, quita la clase y muestra el fondo
+       document.querySelector('body')?.classList.remove('scanner-active');
+       BarcodeScanner.showBackground(); // Vuelve a mostrar el fondo
     } catch (error) {
       console.error('Error al escanear:', error);
     }

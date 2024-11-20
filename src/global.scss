@@ -52,3 +52,8 @@ ion-content, ion-header, ion-toolbar, ion-title, ion-label, ion-item, ion-button
 ion-button {
   margin-top: 5%;
 }
+/* Permite visualizar el escaner */
+body.scanner-active {
+  --background: transparent;
+  --ion-background-color: transparent;
+}
