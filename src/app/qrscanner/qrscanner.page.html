@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>QR Scanner</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button expand="full" (click)="checkPermissionAndScan()">Escanear Código QR</ion-button>
+  <ion-item>
+    <ion-label position="floating">Resultado del Escaneo</ion-label>
+    <ion-input [(ngModel)]="scanResult"></ion-input>
+  </ion-item>
+</ion-content>

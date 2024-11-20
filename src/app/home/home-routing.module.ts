@@ -4,6 +4,7 @@ import { HomePage } from './home.page';
 import { PasswordrecoveryPage } from '../passwordrecovery/passwordrecovery.page';
 import { RegisterPage } from '../register/register.page';
 import { LoginPage } from '../login/login.page';
+import { QrScannerPage } from '../qrscanner/qrscanner.page';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginPage
+  },
+  {
+    path: 'qrscanner',
+    component: QrScannerPage
   }
 ];
 
