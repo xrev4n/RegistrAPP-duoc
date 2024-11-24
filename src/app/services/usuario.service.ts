@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private apiUrl = 'https://www.presenteprofe.cl/api/v1'; // URL base de la API
+  private apiUrl = 'https://www.presenteprofe.cl/api/v1';
 
   constructor(private http: HttpClient) { }
 

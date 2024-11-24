@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
-import { AuthService } from '../services/auth.service'; // Asegúrate de importar el servicio
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,46 +8,50 @@ import { AuthService } from '../services/auth.service'; // Asegúrate de importa
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
   username: string = '';
   password: string = '';
 
   constructor(
-    private navCtrl: NavController, 
-    private alertCtrl: AlertController, 
+    private navCtrl: NavController,
+    private alertCtrl: AlertController,
     private authService: AuthService
-  ) { }
+  ) {}
 
   ngOnInit() {}
 
   async login() {
-    // Llamar al servicio de login
-    this.authService.login(this.username, this.password).subscribe(async (response) => {
-      if (response.message === 'Success') {
-        // Guardar el nombre de usuario en el servicio
-        this.authService.setUserName(this.username);
+    this.authService.login(this.username, this.password).subscribe(
+      async (response) => {
+        if (response.message === 'Success') {
+          // Guardar el nombre de usuario
+          this.authService.setUserName(this.username);
 
-        // Guardar el token de la respuesta usando el método setToken
-        const token = response.token; // Asegúrate de que la respuesta tenga el campo 'token'
-        await this.authService.setToken(token);
+          // Extraer y guardar el token
+          const token = response.auth.token;
+          await this.authService.setToken(token);
 
-        // Navegar a la siguiente página
-        this.navCtrl.navigateForward('/main-page');
-      } else {
+          // Navegar a la página principal
+          this.navCtrl.navigateForward('/main-page');
+        } else {
+          // Mensaje de error por credenciales incorrectas
+          const alert = await this.alertCtrl.create({
+            header: 'Error',
+            message: 'Usuario y/o contraseña incorrectos, por favor intente nuevamente.',
+            buttons: ['OK'],
+          });
+          await alert.present();
+        }
+      },
+      async (error) => {
+        // Manejo de errores del servidor o conexión
         const alert = await this.alertCtrl.create({
           header: 'Error',
-          message: 'Usuario y/o contraseña incorrectos, por favor intente nuevamente.',
-          buttons: ['OK']
+          message: 'Ocurrió un error al iniciar sesión. Por favor, intente nuevamente.',
+          buttons: ['OK'],
         });
         await alert.present();
+        console.error('Error al iniciar sesión:', error);
       }
-    }, async (error) => {
-      const alert = await this.alertCtrl.create({
-        header: 'Error',
-        message: 'Ocurrió un error al iniciar sesión.',
-        buttons: ['OK']
-      });
-      await alert.present();
-    });
+    );
   }
 }
