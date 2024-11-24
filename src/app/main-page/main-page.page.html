@@ -7,7 +7,7 @@
   </ion-header>
   <ion-content class="ion-padding">
     <ion-list>
-      <ion-item routerLink="/home">Cerrar sesión</ion-item>
+      <ion-item button (click)="logout()">Cerrar sesión</ion-item> <!-- Cambiar a un botón con evento -->
     </ion-list>
   </ion-content>
 </ion-menu>
