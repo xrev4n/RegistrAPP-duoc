@@ -7,7 +7,10 @@
   </ion-header>
   <ion-content class="ion-padding">
     <ion-list>
-      <ion-item button (click)="logout()">Cerrar sesión</ion-item> <!-- Cambiar a un botón con evento -->
+      <ion-item routerLink="/cursos">Cursos</ion-item>
+      <ion-item routerLink="/asistencia">Registro de Asistencia</ion-item>
+      <ion-item routerLink="/qrscanner">Escanear QR</ion-item>
+      <ion-item button (click)="logout()">Cerrar sesión</ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>
@@ -27,8 +30,24 @@
       <ion-title size="large">Main Page</ion-title>
     </ion-toolbar>
   </ion-header>
-  <!-- Aquí va el contenido de la página principal -->
-  <div class="ion-padding">
-    <h1>Bienvenido, {{ userName }}</h1> <!-- Muestra el nombre del usuario -->
-  </div>
+  <!-- Card con info del usuario -->
+  <ion-card *ngIf="userInfo">
+    <ion-card-header>
+      <ion-card-title>{{ userInfo.nombre_completo }}</ion-card-title>
+      <ion-card-subtitle>{{ userInfo.correo }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div>
+        <p><strong>RUT:</strong> {{ userInfo.run }}</p>
+        <p><strong>Perfil:</strong> {{ userInfo.perfil }}</p>
+      </div>
+      <ion-img [src]="userInfo.img" *ngIf="userInfo.img"></ion-img>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="!userInfo">
+    <ion-card-header>
+      <ion-card-title>Cargando información del usuario...</ion-card-title>
+    </ion-card-header>
+  </ion-card>
 </ion-content>
