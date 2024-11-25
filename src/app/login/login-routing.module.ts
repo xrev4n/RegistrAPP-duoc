@@ -5,6 +5,7 @@ import { PasswordrecoveryPage } from '../passwordrecovery/passwordrecovery.page'
 import { RegisterPage } from '../register/register.page';
 import { LoginPage } from './login.page';
 import { MainPagePage } from '../main-page/main-page.page';
+import { ProfesorPage } from '../profesor/profesor.page';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'main-page',
     component: MainPagePage
+  },
+  {
+    path: 'profesor',
+    component: ProfesorPage
   },
 ];
 

@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Asistencia del Curso</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <!-- Formulario para ingresar el ID del curso -->
+    <ion-item>
+      <ion-label position="floating">ID del Curso</ion-label>
+      <ion-input [(ngModel)]="cursoId" type="number"></ion-input>
+    </ion-item>
+  
+    <!-- Botón para obtener la asistencia -->
+    <ion-button expand="full" (click)="obtenerAsistencia()">Obtener Asistencia</ion-button>
+  
+    <!-- Mostrar el mensaje o la asistencia -->
+    <div *ngIf="mensaje" class="mensaje">{{ mensaje }}</div>
+  
+    <div *ngIf="asistencia">
+      <h2>Detalles de Asistencia</h2>
+      <p>Total Clases: {{ asistencia.total_clases }}</p>
+      <p>Total Asistencias: {{ asistencia.total_asistencias }}</p>
+      <ul>
+        <li *ngFor="let clase of asistencia.historial_clases">
+          {{ clase.nombre }} - {{ clase.asistencia ? 'Asistió' : 'No Asistió' }} ({{ clase.hora_inicio }} - {{ clase.hora_termino }})
+        </li>
+      </ul>
+    </div>
+  </ion-content>
+  

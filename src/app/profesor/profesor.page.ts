@@ -3,11 +3,12 @@ import { NavController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.page.html',
-  styleUrls: ['./main-page.page.scss'],
+  selector: 'app-profesor',
+  templateUrl: './profesor.page.html',
+  styleUrls: ['./profesor.page.scss'],
 })
-export class MainPagePage implements OnInit {
+export class ProfesorPage implements OnInit {
+
   userName: string | null = '';
   userInfo: any = null;
 

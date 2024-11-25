@@ -10,7 +10,7 @@ export class AuthService {
   private apiUrl = 'https://www.presenteprofe.cl/api/v1/auth';
   private userName: string | null = null;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // Método para iniciar sesión
   login(correo: string, password: string): Observable<any> {
@@ -18,14 +18,42 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}`, body);
   }
 
-  // Método para guardar el nombre del usuario
+  // Método para obtener la información del usuario autenticado
+  async getUserInfo(): Promise<Observable<any>> {
+    const token = await this.getToken();
+    if (!token) {
+      throw new Error('Token no encontrado. El usuario no está autenticado.');
+    }
+
+    let correo = this.userName;
+    if (!correo) {
+      // Intenta recuperar el correo del almacenamiento
+      const { value } = await Storage.get({ key: 'auth_email' });
+      correo = value;
+      if (!correo) {
+        throw new Error('Correo del usuario no encontrado.');
+      }
+    }
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      Accept: 'application/json',
+    });
+
+    // Llamada al endpoint /me para obtener la información completa del usuario
+    return this.http.get<any>(`${this.apiUrl}/me?user=${encodeURIComponent(correo)}`, { headers });
+  }
+
+  // Modifica el setUserName para guardar el correo en Storage
   setUserName(name: string) {
     this.userName = name;
+    Storage.set({ key: 'auth_email', value: name });
   }
 
   // Método para obtener el nombre del usuario
-  getUserName(): string | null {
-    return this.userName;
+  async getUserName(): Promise<string | null> {
+    const { value } = await Storage.get({ key: 'auth_email' });
+    return value;
   }
 
   // Método para guardar el token en Storage
@@ -42,41 +70,16 @@ export class AuthService {
     return value;
   }
 
-  // Método para obtener la información del usuario autenticado
-  async getUserInfo(): Promise<Observable<any>> {
-    const token = await this.getToken();
-    if (!token) {
-      throw new Error('Token no encontrado. El usuario no está autenticado.');
-    }
-
-    const correo = this.getUserName();
-    if (!correo) {
-      throw new Error('Correo del usuario no encontrado.');
-    }
-
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-      Accept: 'application/json',
-    });
-
-    return this.http.get<any>(
-      `${this.apiUrl}/me?user=${encodeURIComponent(correo)}`,
-      { headers }
-    );
-  }
-
   // Método para recuperar la contraseña
   recoverPassword(correo: string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/recuperar`, { correo });
   }
 
-  //Metodo para manejar la persistencia
+  //Método para manejar la persistencia
   async checkToken(): Promise<boolean> {
     const token = await this.getToken(); // Obtén el token del storage
     if (token) {
       console.log('Token encontrado:', token);
-
-      // Aquí puedes agregar lógica para validar el token si es necesario
       return true; // Asume que el token es válido
     } else {
       console.log('No se encontró token en el almacenamiento.');
@@ -86,15 +89,9 @@ export class AuthService {
 
   // Método para cerrar sesión y borrar el token
   async logout(): Promise<void> {
-    // Borra el token del almacenamiento
     await Storage.remove({ key: 'auth_token' });
-
-    // Limpia la variable de usuario local
+    await Storage.remove({ key: 'auth_email' });
     this.userName = null;
-
     console.log('Sesión cerrada y token eliminado.');
   }
-
-
 }
-

@@ -22,10 +22,6 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginPage
-  },
-  {
-    path: 'qrscanner',
-    component: QrScannerPage
   }
 ];
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { AlertController } from '@ionic/angular';
+import { AsistenciaService } from '../services/asistencia.service';  // Importar el servicio
 
 @Component({
   selector: 'app-qrscanner',
@@ -10,7 +11,10 @@ import { AlertController } from '@ionic/angular';
 export class QrScannerPage {
   scanResult: string = '';
 
-  constructor(private alertCtrl: AlertController) {}
+  constructor(
+    private alertCtrl: AlertController,
+    private asistenciaService: AsistenciaService  // Inyectar el servicio
+  ) {}
 
   async checkPermissionAndScan() {
     try {
@@ -46,18 +50,45 @@ export class QrScannerPage {
       } else {
         console.log('No se detectó contenido en el código QR.');
       }
-       // Después de terminar el escáner, quita la clase y muestra el fondo
-       document.querySelector('body')?.classList.remove('scanner-active');
-       BarcodeScanner.showBackground(); // Vuelve a mostrar el fondo
+      // Después de terminar el escáner, quita la clase y muestra el fondo
+      document.querySelector('body')?.classList.remove('scanner-active');
+      BarcodeScanner.showBackground(); // Vuelve a mostrar el fondo
     } catch (error) {
       console.error('Error al escanear:', error);
     }
   }
 
+  // Método para mostrar la alerta de permisos
   async showPermissionAlert() {
     const alert = await this.alertCtrl.create({
       header: 'Permiso requerido',
       message: 'La aplicación necesita acceso a la cámara para escanear códigos QR.',
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
+
+  // Método para registrar la asistencia
+  registrarAsistencia() {
+    if (this.scanResult) {
+      this.asistenciaService.registrarAsistencia(this.scanResult).subscribe(
+        (response) => {
+          this.showAlert('Asistencia registrada con éxito', response.message);
+        },
+        (error) => {
+          this.showAlert('Error al registrar asistencia', error);
+        }
+      );
+    } else {
+      this.showAlert('Error', 'No se ha escaneado ningún código QR');
+    }
+  }
+
+  // Método para mostrar alertas
+  async showAlert(header: string, message: string) {
+    const alert = await this.alertCtrl.create({
+      header: header,
+      message: message,
       buttons: ['OK'],
     });
     await alert.present();
