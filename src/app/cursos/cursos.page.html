@@ -8,12 +8,20 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let curso of cursos">
-      <ion-label>
-        <h2>ID: {{ curso.id }} - {{ curso.nombre }}</h2>
-        <p>{{ curso.descripcion }}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
-</ion-content>
+  
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400&display=swap" rel="stylesheet">
+  </head>
+
+  <ion-content>
+    <div class="categoria">ANALISTA PROGRAMADOR COMPUTACIONAL</div>
+    <ion-list>
+      <ion-item *ngFor="let curso of cursos">
+        <ion-label>
+          <h2>ID: {{ curso.id }} - {{ curso.nombre }}</h2>
+          <p>{{ curso.descripcion }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  
