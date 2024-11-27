@@ -1,98 +1,21 @@
-ion-header {
-    --background: #0054e9;
-    --color: #ffffff;
-  }
-  
-  ion-toolbar {
-    --background: #0054e9;
-  }
-  
-  ion-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-  }
-  
-  ion-content {
-    --background: #f8f9fa;
-  }
-  
-  
-  .scanner-card, .result-card {
-    margin: 16px 0;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .scanner-card ion-card-header {
-    background: #ffb800;
-    color: white;
-    padding: 16px;
-  }
-  
-  .scanner-placeholder {
-    background: #f5f5f5;
-    border: 2px dashed #ddd;
-    border-radius: 8px;
-    margin: 20px auto;
-    width: 280px;
-    height: 280px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .scanner-icon {
-    font-size: 64px;
-    color: #999;
-  }
-  
- 
-  .scan-button {
-    --background: #ffb800;
-    --background-hover: #e6a200;
-    margin-top: 16px;
-    font-weight: 600;
-  }
-  
-  .register-button {
-    --background: #0054e9;
-    --background-hover: #0047c3;
-    margin-top: 24px;
-    font-weight: 600;
-    height: 48px;
-  }
-  
-  
-  ion-item {
-    --background: #ffffff;
-    --border-color: #0054e9;
-    border-radius: 8px;
-    margin: 8px 0;
-    --padding-start: 16px;
-    --padding-end: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  }
-  
-  ion-input {
-    --padding-start: 8px;
-    --placeholder-color: #999;
-    --placeholder-opacity: 0.8;
-    font-size: 1rem;
-  }
-  
-  
-  ion-button {
-    transition: opacity 0.3s ease;
-  }
-  
-  ion-button[disabled] {
-    opacity: 0.6;
-  }
-  
-  .scanner-placeholder {
-    transition: border-color 0.3s ease;
-  }
-  
-  .scanner-placeholder:hover {
-    border-color: #0054e9;
-  }
+/* Estilo para el contenedor de la cámara */
+.scanner-placeholder {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-color: transparent;
+}
+
+#camera-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+}
+
+.scan-button {
+  margin-top: 20px;
+}
+

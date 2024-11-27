@@ -19,8 +19,10 @@
       </ion-card-title>
     </ion-card-header>
     <ion-card-content class="ion-text-center">
+      <!-- Contenedor para la cámara -->
       <div class="scanner-placeholder">
-        <ion-icon name="camera" color="medium" class="scanner-icon"></ion-icon>
+        <!-- El icono es solo un marcador de posición, la cámara se renderiza aquí -->
+        <div id="camera-container" style="width: 100%; height: 300px;"></div>
       </div>
       <ion-button expand="block" (click)="checkPermissionAndScan()" class="scan-button">
         <ion-icon name="scan-outline" slot="start"></ion-icon>

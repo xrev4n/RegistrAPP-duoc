@@ -34,12 +34,17 @@ export class QrScannerPage {
 
   async startScanner() {
     try {
-      // Mostrar la cámara para previsualización (cámara visible)
+      // Mostrar la cámara para previsualización
       console.log('Iniciando el escáner y mostrando la cámara...');
       document.querySelector('body')?.classList.add('scanner-active');
+      await BarcodeScanner.hideBackground(); // Oculta el fondo para mejorar la visualización de la cámara
 
-      // Asegúrate de que la cámara esté visible
-      await BarcodeScanner.hideBackground(); // Mostrar la cámara y el fondo
+      // Asegúrate de que la cámara esté visible en el contenedor
+      const cameraContainer = document.getElementById('camera-container');
+      if (cameraContainer) {
+        await BarcodeScanner.startScan();
+        BarcodeScanner.showBackground(); // Vuelve a mostrar el fondo
+      }
 
       const result = await BarcodeScanner.startScan(); // Inicia el escáner
 
@@ -52,7 +57,6 @@ export class QrScannerPage {
       }
       // Después de terminar el escáner, quita la clase y muestra el fondo
       document.querySelector('body')?.classList.remove('scanner-active');
-      BarcodeScanner.showBackground(); // Vuelve a mostrar el fondo
     } catch (error) {
       console.error('Error al escanear:', error);
     }
@@ -92,5 +96,13 @@ export class QrScannerPage {
       buttons: ['OK'],
     });
     await alert.present();
+  }
+
+  // Método para detener el escaner al abandonar la pagina
+  ionViewWillLeave() {
+    // Detener el escáner y restaurar el fondo
+    BarcodeScanner.stopScan();  // Detener el escáner
+    BarcodeScanner.showBackground(); // Restaurar el fondo
+    document.querySelector('body')?.classList.remove('scanner-active');  // Eliminar la clase de fondo transparente
   }
 }
