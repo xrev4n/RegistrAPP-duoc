@@ -15,7 +15,7 @@ En la ruta donde deseas instalar el proyecto ejecuta:
 Para ver la aplicación en el navegador, ejecuta:
 
     ```bash
-    ionic serve
+    ionic s
 
 # Instrucciones para instalar en tu dispositivo Android
 
