@@ -1,9 +1,40 @@
-# RegistrAPP - README
+# Instrucciones para visualizar en el navegador
 
-## Credenciales de Prueba
+1. **Clonar el repositorio** 
+En la ruta donde deseas instalar el proyecto ejecuta:
+   ```bash
+   git clone https://github.com/xrev4n/RegistrAPP-duoc.git
 
-Para logear ingresar las siguientes credenciales:
+2. **Instalar dependencias**  
 
-- **Usuario:** estudiante@presenteprofe.cl
-- **Contraseña:** admin123
--------------------------------------------------
+   ```bash
+   cd ruta-del-proyecto
+   npm install
+
+3. **Ejecutar en el navegador**  
+Para ver la aplicación en el navegador, ejecuta:
+
+    ```bash
+    ionic serve
+
+# Instrucciones para instalar en tu dispositivo Android
+
+Activa las opciones de desarrollador en tu dispositivo Android, luego activa la depuración por USB y conecta tu dispositivo a tu PC.
+En Android Studio, abre el proyecto y en la terminal ejecuta los siguientes comandos:
+
+1. **Construye el proyecto para Android**
+
+   ```bash
+   ionic build
+   
+2. **Sincroniza con Capacitor**
+
+    ```bash
+    ionic capacitor sync android
+    
+3. **Abre la build en Android Studio**
+    ```bash
+    ionic capacitor open android
+
+4. **Ejecuta la App**
+En Android Studio presiona el boton de Play para ejecutar la App en tu dispositivo. 
