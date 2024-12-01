@@ -9,7 +9,7 @@ En la ruta donde deseas instalar el proyecto ejecuta:
 
    ```bash
    cd ruta-del-proyecto
-   npm install
+   npm install --legacy-peer-deps
 
 3. **Ejecutar en el navegador**  
 Para ver la aplicación en el navegador, ejecuta:
