@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-text>Crear Curso</ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="header-section">Detalles del Curso</div>
+  <form (ngSubmit)="onSubmit()" [formGroup]="courseForm" class="form-container">
+    <ion-item class="form-item">
+      <ion-label position="stacked">Nombre</ion-label>
+      <ion-input
+        formControlName="nombre"
+        type="text"
+        placeholder="Curso de Laravel"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item class="form-item">
+      <ion-label position="stacked">Sigla</ion-label>
+      <ion-input formControlName="sigla" type="text" placeholder="LAR101"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-item">
+      <ion-label position="stacked">Institución</ion-label>
+      <ion-input
+        formControlName="institucion"
+        type="text"
+        placeholder="Duoc UC"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item class="form-item">
+      <ion-label position="stacked">Descripción</ion-label>
+      <ion-textarea
+        formControlName="descripcion"
+        placeholder="Introducción a Laravel"
+      ></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="courseForm.invalid" color="success" class="submit-button">
+      Crear Curso
+    </ion-button>
+  </form>
+</ion-content>

@@ -6,25 +6,11 @@ import { Storage } from '@capacitor/storage';
 @Injectable({
   providedIn: 'root',
 })
-export class CursosService {
-  private apiUrl = 'https://www.presenteprofe.cl/api/v1/cursos'; // URL base de la API
+export class EstudiantesService {
+  private apiUrl = 'https://www.presenteprofe.cl/api/v1/estudiante/cursos'; // URL base de la API
 
-  constructor(private http: HttpClient) { }
-  //Metodo para crear curso
-  async createCourse(courseData: any): Promise<any> {
-    const token = await this.getToken(); // Obtener el token desde el almacenamiento
-    if (!token) {
-      throw new Error('No se encontró el token de autenticación.');
-    }
-  
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`, // Incluir el token en los encabezados
-      'Content-Type': 'application/json', // Establecer el tipo de contenido si es necesario
-    });
-  
-    return this.http.post(this.apiUrl, courseData, { headers }).toPromise();
-  }
-  
+  constructor(private http: HttpClient) {}
+
   // Método para obtener los cursos del estudiante
   async obtenerCursos(): Promise<Observable<any>> {
     const token = await this.getToken(); // Obtener token desde Capacitor Storage
@@ -58,7 +44,7 @@ export class CursosService {
     return value;
   }
 
-  // Método para obtener la asistencia de un curso
+    // Método para obtener la asistencia de un curso
   async obtenerAsistenciaCurso(cursoId: number): Promise<Observable<any>> {
     // Obtener el token del Storage
     const token = await this.getToken();
@@ -75,5 +61,4 @@ export class CursosService {
     const url = `${this.apiUrl}/${cursoId}`;
     return this.http.get<any>(url, { headers });
   }
-
 }

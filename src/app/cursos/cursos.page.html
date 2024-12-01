@@ -4,22 +4,26 @@
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      <ion-text>Cursos Matriculados</ion-text>
+      <ion-text>Cursos</ion-text>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="categoria">Cursos Disponibles</div>
+  <ion-list>
+    <ion-item *ngFor="let curso of cursos">
+      <ion-label>
+        <h2>ID: {{ curso.id }} - {{ curso.nombre }}</h2>
+        <p>{{ curso.descripcion }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
-  <ion-content>
-    <div class="categoria">ANALISTA PROGRAMADOR COMPUTACIONAL</div>
-    <ion-list>
-      <ion-item *ngFor="let curso of cursos">
-        <ion-label>
-          <h2>ID: {{ curso.id }} - {{ curso.nombre }}</h2>
-          <p>{{ curso.descripcion }}</p>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  </ion-content>
-  
+  <!-- Botón flotante para crear curso -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="'/crear-curso'">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

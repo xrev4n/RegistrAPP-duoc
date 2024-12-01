@@ -46,6 +46,14 @@ const routes: Routes = [
     path: 'qr-generator',
     loadChildren: () => import('./qr-generator/qr-generator.module').then( m => m.QrGeneratorPageModule)
   },
+  {
+    path: 'cursos-matriculados',
+    loadChildren: () => import('./cursos-matriculados/cursos-matriculados.module').then( m => m.CursosMatriculadosPageModule)
+  },
+  {
+    path: 'crear-curso',
+    loadChildren: () => import('./crear-curso/crear-curso.module').then( m => m.CrearCursoPageModule)
+  },
 
 
 ];

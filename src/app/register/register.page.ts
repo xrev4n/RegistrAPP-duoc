@@ -29,8 +29,20 @@ export class RegisterPage {
       await alert.present();
       return;
     }
+    // Verifica los datos antes de enviarlos
+    console.log({
+      codigo: this.codigo,
+      run: this.run,
+      nombre: this.nombre,
+      apellido: this.apellido,
+      correo: this.correo,
+      perfil: this.perfil
+    });
 
-    this.usuarioService.registerUser(this.codigo, this.run, this.nombre, this.apellido, this.correo, this.perfil).subscribe(async (response) => {
+    this.usuarioService.registerUser(this.codigo, this.run, this.nombre, this.apellido, this.correo, this.perfil).subscribe(async (response: any) => {
+      console.log('Respuesta de la API:', response);
+
+
       if (response.message === 'Usuario registrado exitosamente') {
         const alert = await this.alertCtrl.create({
           header: 'Éxito',

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { MainPagePage } from './main-page.page';
 import { QrScannerPage } from '../qrscanner/qrscanner.page';
-import { CursosPage } from '../cursos/cursos.page';
+import { CursosMatriculadosPage } from '../cursos-matriculados/cursos-matriculados.page';
 import { AsistenciaPage } from '../asistencia/asistencia.page';
 
 const routes: Routes = [
@@ -16,8 +16,8 @@ const routes: Routes = [
     component: QrScannerPage
   },
   {
-    path: 'cursos',
-    component: CursosPage
+    path: 'cursos-matriculados',
+    component: CursosMatriculadosPage
   },
   {
     path: 'asistencia',
