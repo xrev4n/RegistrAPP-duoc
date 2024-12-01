@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ProfesorPage } from './profesor.page';
 import { CursosPage } from '../cursos/cursos.page';
+import { CrearClasePage } from '../crear-clase/crear-clase.page';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'cursos',
     component: CursosPage
+  },
+  {
+    path: 'crear-clase',
+    component: CrearClasePage
   },
 ];
 

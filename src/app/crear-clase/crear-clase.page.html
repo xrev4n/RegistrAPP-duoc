@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-text>Crear Clase</ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="header-section">Detalles de la Clase</div>
+  
+  <form [formGroup]="claseForm" (ngSubmit)="onSubmit()" class="form-container">
+    <ion-item class="form-item">
+      <ion-label position="stacked">ID Curso</ion-label>
+      <ion-input
+        formControlName="id_curso"
+        type="number"
+        placeholder="Ingrese el ID del curso"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item class="form-item">
+      <ion-label position="stacked">Fecha</ion-label>
+      <ion-input
+        formControlName="fecha"
+        type="date"
+        placeholder="YYYY-MM-DD"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item class="form-item">
+      <ion-label position="stacked">Hora Inicio</ion-label>
+      <ion-input
+        formControlName="hora_inicio"
+        type="time"
+        placeholder="HH:MM:SS"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item class="form-item">
+      <ion-label position="stacked">Hora Término</ion-label>
+      <ion-input
+        formControlName="hora_termino"
+        type="time"
+        placeholder="HH:MM:SS"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="claseForm.invalid" color="success" class="submit-button">
+      Crear Clase
+    </ion-button>
+  </form>
+
+  <!-- Mostrar respuesta de la API -->
+  <div *ngIf="respuestaClase" class="respuesta">
+    <h3>{{ respuestaClase.message }}</h3>
+    <p><strong>ID Clase:</strong> {{ respuestaClase.clase.id }}</p>
+    <p><strong>Fecha:</strong> {{ respuestaClase.clase.fecha }}</p>
+    <p><strong>Hora Inicio:</strong> {{ respuestaClase.clase.hora_inicio }}</p>
+    <p><strong>Hora Término:</strong> {{ respuestaClase.clase.hora_termino }}</p>
+    <p><strong>Código WEB:</strong> {{ respuestaClase.codigo_qr }}</p>
+  </div>
+
+  <!-- Mostrar errores -->
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+  </div>
+</ion-content>
