@@ -9,10 +9,30 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div *ngIf="codigoQr">
-    <h2>Código QR para la clase</h2>
-    <p>El código QR para la clase es: {{ codigoQr }}</p>
-    <!-- Aquí puedes agregar la lógica para generar y mostrar el código QR -->
-  </div>
+<ion-content class="ion-padding">
+  <!-- Área del Generador de QR -->
+  <ion-card class="qr-card">
+    <ion-card-header color="warning">
+      <ion-card-title class="ion-text-center">
+        <ion-icon name="qr-code-outline" class="ion-margin-end"></ion-icon>
+        Generar Código QR
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="ion-text-center">
+      <div *ngIf="codigoQr" class="qr-container">
+        <h2>Código QR para la clase:</h2>
+        <!-- Componente qrcode para mostrar el código QR -->
+        <qrcode [qrdata]="codigoQr" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+        
+        <!-- Mostrar el código como texto debajo del QR -->
+        <div class="qr-text">
+          <p>{{codigoQr}}</p>
+        </div>
+      </div>
+
+      <div *ngIf="!codigoQr" class="no-qrcode-message">
+        <p>No se ha recibido el código QR.</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

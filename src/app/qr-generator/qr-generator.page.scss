@@ -1,0 +1,53 @@
+/* Estilo para el contenedor de QR */
+.qr-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .qr-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+  
+  .qr-text {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #333;
+    word-wrap: break-word;
+    white-space: pre-wrap; /* Permite que el texto se ajuste adecuadamente si es largo */
+  }
+  
+  .no-qrcode-message {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: gray;
+    text-align: center;
+  }
+  
+  /* Estilo para el contenedor del card */
+  .qr-card {
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+  
+  /* Ajuste del Icono en el encabezado del card */
+  .qr-card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .qr-card-header ion-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+  }
+  
+  /* Estilo adicional para el mensaje de "No se ha recibido el código QR" */
+  .no-qrcode-message p {
+    font-style: italic;
+  }
+  

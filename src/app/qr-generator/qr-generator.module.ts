@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { QrGeneratorPageRoutingModule } from './qr-generator-routing.module';
-
+import { QRCodeComponent } from 'angularx-qrcode'; // Importa el QRCodeComponent
 import { QrGeneratorPage } from './qr-generator.page';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { QrGeneratorPage } from './qr-generator.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    QrGeneratorPageRoutingModule
+    QrGeneratorPageRoutingModule,
+    QRCodeComponent
   ],
   declarations: [QrGeneratorPage]
 })
