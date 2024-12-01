@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router'; // Importar ActivatedRoute
 
 @Component({
   selector: 'app-qr-generator',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./qr-generator.page.scss'],
 })
 export class QrGeneratorPage implements OnInit {
+  codigoQr: string | null = null;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
+    // Obtener el código QR de los parámetros de la ruta
+    this.route.paramMap.subscribe(params => {
+      this.codigoQr = params.get('codigo');
+    });
   }
-
 }

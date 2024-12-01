@@ -62,6 +62,7 @@
     <p><strong>Hora Inicio:</strong> {{ respuestaClase.clase.hora_inicio }}</p>
     <p><strong>Hora Término:</strong> {{ respuestaClase.clase.hora_termino }}</p>
     <p><strong>Código WEB:</strong> {{ respuestaClase.codigo_qr }}</p>
+    <ion-button color="primary" (click)="goToQrGenerator()">Generar Código QR</ion-button> <!-- Botón para ir a qr-generator -->
   </div>
 
   <!-- Mostrar errores -->

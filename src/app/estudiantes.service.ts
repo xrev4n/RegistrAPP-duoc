@@ -10,7 +10,8 @@ export class EstudiantesService {
   private apiUrl = 'https://www.presenteprofe.cl/api/v1/estudiante/cursos'; // URL base de la API
 
   constructor(private http: HttpClient) {}
-
+  
+  
   // Método para obtener los cursos del estudiante
   async obtenerCursos(): Promise<Observable<any>> {
     const token = await this.getToken(); // Obtener token desde Capacitor Storage

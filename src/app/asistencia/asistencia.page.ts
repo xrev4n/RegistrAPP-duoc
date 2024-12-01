@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CursosService } from '../services/cursos.service'; // Asegúrate de importar el servicio
+import { EstudiantesService } from '../estudiantes.service';
 
 @Component({
   selector: 'app-asistencia',
@@ -12,7 +12,7 @@ export class AsistenciaPage {
   asistencia: any = null; // Datos de asistencia
 
   constructor(
-    private cursosService: CursosService,
+    private estudiantesService: EstudiantesService
   ) {}
 
   // Método para obtener la asistencia
@@ -24,7 +24,7 @@ export class AsistenciaPage {
   
     try {
       // Llamamos al servicio para obtener la asistencia
-      const asistenciaObservable = await this.cursosService.obtenerAsistenciaCurso(this.cursoId);
+      const asistenciaObservable = await this.estudiantesService.obtenerAsistenciaCurso(this.cursoId);
       asistenciaObservable.subscribe({
         next: (data) => {
           this.asistencia = data; // Almacenar la información de la asistencia

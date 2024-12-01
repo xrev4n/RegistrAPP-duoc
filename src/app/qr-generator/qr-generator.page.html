@@ -4,15 +4,15 @@
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      <ion-text>QRGenerator</ion-text>
+      <ion-text>Generar Código QR</ion-text>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">qrGenerator</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div *ngIf="codigoQr">
+    <h2>Código QR para la clase</h2>
+    <p>El código QR para la clase es: {{ codigoQr }}</p>
+    <!-- Aquí puedes agregar la lógica para generar y mostrar el código QR -->
+  </div>
 </ion-content>
