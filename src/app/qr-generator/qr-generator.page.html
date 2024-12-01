@@ -15,18 +15,17 @@
     <ion-card-header color="warning">
       <ion-card-title class="ion-text-center">
         <ion-icon name="qr-code-outline" class="ion-margin-end"></ion-icon>
-        Generar Código QR
+        <strong>Código QR</strong>
       </ion-card-title>
     </ion-card-header>
     <ion-card-content class="ion-text-center">
       <div *ngIf="codigoQr" class="qr-container">
-        <h2>Código QR para la clase:</h2>
         <!-- Componente qrcode para mostrar el código QR -->
         <qrcode [qrdata]="codigoQr" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
         
         <!-- Mostrar el código como texto debajo del QR -->
         <div class="qr-text">
-          <p>{{codigoQr}}</p>
+          <h2>{{codigoQr}}</h2>
         </div>
       </div>
 
