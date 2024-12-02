@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ClasesPage } from './clases.page';
 import { CrearClasePage } from '../crear-clase/crear-clase.page';
+import { QrGeneratorPage } from '../qr-generator/qr-generator.page';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'crear-clase',
     component: CrearClasePage
+  },
+  {
+    path: 'qr-generator',
+    component: QrGeneratorPage
   }
 ];
 

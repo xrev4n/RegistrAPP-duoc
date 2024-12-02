@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CursosService } from '../services/cursos.service';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clases',
@@ -11,7 +12,7 @@ export class ClasesPage {
   idCurso: number = 0;
   clases: any[] = [];
 
-  constructor(private cursosService: CursosService, private alertController: AlertController) {}
+  constructor(private cursosService: CursosService, private alertController: AlertController, private router: Router) {}
 
   async obtenerClases() {
     if (!this.idCurso) {
@@ -38,4 +39,10 @@ export class ClasesPage {
       }
     });
   }
+    // Método para navegar a la página de generación de QR
+    goToQrGenerator(codigoWeb: string) {
+      if (codigoWeb) {
+        this.router.navigate(['/qr-generator', { codigo: codigoWeb }]);
+      }
+    }
 }
