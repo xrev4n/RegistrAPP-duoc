@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';  // Asegúrate de importar HttpParams
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Storage } from '@capacitor/storage';
 
@@ -9,22 +9,23 @@ import { Storage } from '@capacitor/storage';
 export class CursosService {
   private apiUrl = 'https://www.presenteprofe.cl/api/v1/cursos'; // URL base de la API
 
-  constructor(private http: HttpClient) { }
-  //Metodo para crear curso
+  constructor(private http: HttpClient) {}
+
+  // Método para crear curso
   async createCourse(courseData: any): Promise<any> {
     const token = await this.getToken(); // Obtener el token desde el almacenamiento
     if (!token) {
       throw new Error('No se encontró el token de autenticación.');
     }
-  
+
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`, // Incluir el token en los encabezados
       'Content-Type': 'application/json', // Establecer el tipo de contenido si es necesario
     });
-  
+
     return this.http.post(this.apiUrl, courseData, { headers }).toPromise();
   }
-  
+
   // Método para obtener los cursos del estudiante
   async obtenerCursos(): Promise<Observable<any>> {
     const token = await this.getToken(); // Obtener token desde Capacitor Storage
@@ -44,7 +45,6 @@ export class CursosService {
     // Realizar la solicitud GET
     return this.http.get(this.apiUrl, { headers, params });
   }
-
 
   // Método para obtener token desde Capacitor Storage
   private async getToken(): Promise<string | null> {
@@ -76,4 +76,23 @@ export class CursosService {
     return this.http.get<any>(url, { headers });
   }
 
+  // Nuevo método para obtener las clases de un curso
+  async obtenerClasesPorCurso(cursoId: number): Promise<Observable<any>> {
+    // Obtener el token del Storage
+    const token = await this.getToken();
+    if (!token) {
+      throw new Error('No se encontró el token de autenticación.');
+    }
+
+    // Configurar headers con el token de autenticación
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    // Construir la URL de la solicitud
+    const url = `${this.apiUrl}/${cursoId}/clase`;
+
+    // Realizar la solicitud GET para obtener las clases
+    return this.http.get<any>(url, { headers });
+  }
 }

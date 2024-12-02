@@ -58,6 +58,10 @@ const routes: Routes = [
     path: 'crear-clase',
     loadChildren: () => import('./crear-clase/crear-clase.module').then( m => m.CrearClasePageModule)
   },
+  {
+    path: 'clases',
+    loadChildren: () => import('./clases/clases.module').then( m => m.ClasesPageModule)
+  },
 
 
 ];

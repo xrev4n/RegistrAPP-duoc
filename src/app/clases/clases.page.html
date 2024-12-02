@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-text>Clases</ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="categoria">Buscar Clases por Curso</div>
+
+  <!-- Input para ID del Curso -->
+  <ion-item class="input-item">
+    <ion-label position="floating">ID del Curso</ion-label>
+    <ion-input [(ngModel)]="idCurso" type="number"></ion-input>
+  </ion-item>
+
+  <!-- Botón para obtener clases -->
+  <ion-button expand="block" (click)="obtenerClases()" color="primary" class="obtener-clases-btn">
+    Obtener Clases
+  </ion-button>
+
+  <!-- Lista de clases -->
+  <ion-list *ngIf="clases.length > 0">
+    <ion-item *ngFor="let clase of clases">
+      <ion-label>
+        <h2>Clase ID: {{ clase.id }}</h2>
+        <p>Fecha: {{ clase.fecha }}</p>
+        <p>Hora Inicio: {{ clase.hora_inicio }}</p>
+        <p>Hora Término: {{ clase.hora_termino }}</p>
+        <p>Código Web: {{ clase.codigo_web }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Botón flotante para agregar nueva clase (si se desea agregar funcionalidad) -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="'/crear-clase'">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
