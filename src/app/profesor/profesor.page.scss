@@ -1,0 +1,47 @@
+/* Estilo para la card de usuario */
+.user-card {
+    margin-top: 20px;
+    border-radius: 10px;
+    background: #1A1A1A;
+  }
+  
+  /* Imagen del usuario */
+  .user-img {
+    width: 120px; /* Foto grande */
+    height: 120px; /* Foto redonda y grande */
+    border-radius: 50%; /* Foto circular */
+    margin: 0 auto; /* Centrar la imagen */
+    object-fit: cover; /* Ajuste adecuado de la imagen */
+  }
+  
+  /* Título del nombre del usuario */
+  .user-name {
+    font-size: 1.8rem; /* Letra más grande para el nombre */
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px; /* Espacio entre la foto y el nombre */
+  }
+  
+  /* Recuadro con el nombre completo */
+  .user-info-box {
+    background-color: transparent;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  /* Estilo para los detalles (RUT y Perfil) */
+  .user-details {
+    margin-top: 20px;
+    font-size: 1.2rem; /* Tamaño de letra más grande */
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Espaciado de los elementos dentro de la card */
+  .user-card-content {
+    padding: 10px 15px;
+  }
+  
