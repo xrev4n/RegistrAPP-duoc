@@ -38,3 +38,5 @@ En Android Studio, abre el proyecto y en la terminal ejecuta los siguientes coma
 
 4. **Ejecuta la App**
 En Android Studio presiona el boton de Play para ejecutar la App en tu dispositivo. 
+
+[APK Release](https://github.com/xrev4n/RegistrAPP-duoc/blob/xrev4n-patch-1/app-release.apk)
