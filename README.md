@@ -39,5 +39,6 @@ En Android Studio, abre el proyecto y en la terminal ejecuta los siguientes coma
 4. **Ejecuta la App**
 En Android Studio presiona el boton de Play para ejecutar la App en tu dispositivo.
 
-**Descarga el APK**
+# Descarga el APK
+
 [APK Release](https://github.com/xrev4n/RegistrAPP-duoc/blob/50a9b67ffc696f97fadbb66d5653dbbe5c0d4eb0/APK%20Release/registrapp-release.apk)
